@@ -1,6 +1,7 @@
 from django.urls import path
+from .views import home
 
 urlpatterns = [
     
-    #path('',include('app_restaurant/urls'))
+    path('', home, name="home")
 ]
