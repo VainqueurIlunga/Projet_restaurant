@@ -21,7 +21,7 @@ class UserManager(BaseUserManager):
 
     
 
-    def create_superuser(self, email, name, password=None):
+    def create_superuser(self, email, name, tc, password=None):
       """
       Creates and saves a superuser with the given email, name, tc and password.
       """
@@ -29,7 +29,7 @@ class UserManager(BaseUserManager):
           email,
           password=password,
           name=name,
-          tc=True,
+          tc=tc,
           user_type=1
       )
       user.is_admin = True
@@ -41,7 +41,7 @@ class User(AbstractBaseUser):
     
     GENDER = [("M", "Male"), ("F", "Female")]
     STATUS = [("Actif", "actif"), ("Inactif", "inactif")]
-    USER_TYPE = ((1, "admin"),  (2, "client"),(3, "vendor"),)
+    USER_TYPE = ((1, "admin"),  (2, "client"),(3, "vendor"))
     #username = models.CharField(max_length=255, unique=True, db_index=True)
     email = models.EmailField(verbose_name='Email',max_length=255,unique=True,)
     firstname = models.CharField(max_length=255, db_index=True)
